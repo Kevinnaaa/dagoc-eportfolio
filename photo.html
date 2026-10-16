@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Photos & Videos | Brendan Jadrian W. Dagoc</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter+Tight:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      .media-page {
+        padding: 120px 24px 80px;
+        background: #101012;
+        min-height: 100vh;
+        color: #f5f5f0;
+      }
+
+      .media-header {
+        max-width: 900px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+
+      .media-title {
+        font-family: "Boldonse", sans-serif;
+        font-size: 48px;
+        color: #f5f5f0;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+      }
+
+      .media-subtitle {
+        color: #c6f36b;
+        font-family: "Geist Mono", monospace;
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+
+      .media-intro {
+        color: rgba(245, 245, 240, 0.7);
+        line-height: 1.8;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      /* Tabs */
+      .media-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .media-tab {
+        font-family: "Geist Mono", monospace;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        padding: 10px 24px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        color: rgba(245, 245, 240, 0.7);
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .media-tab:hover {
+        border-color: rgba(198, 243, 107, 0.4);
+        color: #f5f5f0;
+      }
+
+      .media-tab.active {
+        background: #c6f36b;
+        color: #101012;
+        border-color: #c6f36b;
+        font-weight: 600;
+      }
+
+      /* Grid */
+      .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .media-item {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .media-item:hover {
+        transform: translateY(-6px);
+        border-color: rgba(198, 243, 107, 0.4);
+      }
+
+      .media-item img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+        background: #1a1a1e;
+        transition: transform 0.4s ease;
+      }
+
+      .media-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Video items with thumbnail */
+      .media-item--video {
+        aspect-ratio: 4 / 3;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .media-item--video img.video-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .media-item--video:hover img.video-thumb {
+        transform: scale(1.05);
+      }
+
+      .media-item--video .video-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          180deg,
+          rgba(16, 16, 18, 0.2) 0%,
+          rgba(16, 16, 18, 0.75) 100%
+        );
+        padding: 20px;
+        text-align: center;
+      }
+
+      .video-play {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(198, 243, 107, 0.15);
+        border: 2px solid #c6f36b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 14px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+      }
+
+      .media-item--video:hover .video-play {
+        background: #c6f36b;
+        transform: scale(1.1);
+      }
+
+      .video-play svg {
+        width: 22px;
+        height: 22px;
+        fill: #c6f36b;
+        margin-left: 3px;
+        transition: fill 0.3s ease;
+      }
+
+      .media-item--video:hover .video-play svg {
+        fill: #101012;
+      }
+
+      .video-label {
+        font-family: "Geist Mono", monospace;
+        font-size: 12px;
+        color: rgba(245, 245, 240, 0.75);
+        letter-spacing: 0.5px;
+      }
+
+      .video-title {
+        font-family: "Inter Tight", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #f5f5f0;
+        margin-bottom: 6px;
+      }
+
+      /* ---- FEATURED VIDEO (smaller) ---- */
+      .video-featured {
+        max-width: 640px;
+        margin: 0 auto 40px;
+      }
+
+      .video-featured-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Geist Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #c6f36b;
+        margin-bottom: 14px;
+        justify-content: center;
+      }
+
+      .video-featured-label::before,
+      .video-featured-label::after {
+        content: "";
+        flex: 0 0 30px;
+        height: 1px;
+        background: rgba(198, 243, 107, 0.3);
+      }
+
+      .video-featured-item {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1a1a1e, #232328);
+        border: 1px solid rgba(198, 243, 107, 0.25);
+        box-shadow:
+          0 0 0 1px rgba(198, 243, 107, 0.08),
+          0 14px 40px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        aspect-ratio: 16 / 9;
+      }
+
+      .video-featured-item:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 0 0 1px rgba(198, 243, 107, 0.3),
+          0 18px 55px rgba(198, 243, 107, 0.12);
+      }
+
+      .video-featured-item img.video-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .video-featured-item:hover img.video-thumb {
+        transform: scale(1.04);
+      }
+
+      .video-featured-item .video-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          180deg,
+          rgba(16, 16, 18, 0.15) 0%,
+          rgba(16, 16, 18, 0.8) 100%
+        );
+        padding: 20px;
+        text-align: center;
+      }
+
+      .video-featured-item .video-play {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+      }
+
+      .video-featured-item .video-play svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .video-featured-item .video-title {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .video-featured-item .video-label {
+        font-size: 12px;
+      }
+
+      .video-featured-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: #c6f36b;
+        color: #101012;
+        font-family: "Geist Mono", monospace;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 999px;
+        z-index: 2;
+      }
+
+      /* ---- CENTERED VIDEO ROW ---- */
+      .videos-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .videos-row .media-item {
+        width: 280px;
+        flex: 0 0 auto;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 24px;
+        backdrop-filter: blur(8px);
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox img,
+      .lightbox video {
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #f5f5f0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+        z-index: 2;
+      }
+
+      .lightbox-close:hover {
+        background: #c6f36b;
+        color: #101012;
+        border-color: #c6f36b;
+      }
+
+      /* Prev / Next arrows */
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #f5f5f0;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+        z-index: 2;
+      }
+
+      .lightbox-nav:hover {
+        background: #c6f36b;
+        color: #101012;
+        border-color: #c6f36b;
+        transform: translateY(-50%) scale(1.08);
+      }
+
+      .lightbox-nav svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
+
+      .lightbox-prev {
+        left: 24px;
+      }
+
+      .lightbox-next {
+        right: 24px;
+      }
+
+      .lightbox-counter {
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Geist Mono", monospace;
+        font-size: 12px;
+        color: rgba(245, 245, 240, 0.7);
+        background: rgba(0, 0, 0, 0.5);
+        padding: 6px 16px;
+        border-radius: 999px;
+        letter-spacing: 1px;
+        z-index: 2;
+      }
+
+      .lightbox-caption {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Inter Tight", sans-serif;
+        font-size: 15px;
+        color: #f5f5f0;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px 22px;
+        border-radius: 999px;
+        white-space: nowrap;
+        max-width: 80vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        z-index: 2;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .media-title {
+          font-size: 32px;
+        }
+
+        .media-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 14px;
+        }
+
+        .lightbox-caption {
+          font-size: 13px;
+          padding: 8px 16px;
+        }
+
+        .lightbox-nav {
+          width: 42px;
+          height: 42px;
+        }
+
+        .lightbox-prev {
+          left: 12px;
+        }
+
+        .lightbox-next {
+          right: 12px;
+        }
+
+        .lightbox-close {
+          top: 14px;
+          right: 14px;
+          width: 38px;
+          height: 38px;
+        }
+
+        .lightbox-counter {
+          top: 18px;
+        }
+
+        .videos-row .media-item {
+          width: calc(50% - 10px);
+          min-width: 180px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .media-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .video-title {
+          font-size: 12px;
+        }
+
+        .video-label {
+          font-size: 10px;
+        }
+
+        .video-featured-item .video-play {
+          width: 48px;
+          height: 48px;
+        }
+
+        .video-featured-item .video-play svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .video-featured-item .video-title {
+          font-size: 13px;
+        }
+
+        .video-featured-badge {
+          font-size: 9px;
+          padding: 4px 9px;
+          top: 10px;
+          left: 10px;
+        }
+
+        .lightbox-nav {
+          width: 38px;
+          height: 38px;
+        }
+
+        .lightbox-nav svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .videos-row {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .videos-row .media-item {
+          width: 100%;
+          max-width: 320px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- SITE NAVIGATION -->
+    <header class="site-header">
+      <div class="container container--wide">
+        <nav class="nav" aria-label="Primary">
+          <a class="brand">Dagoc Portfolio </a>
+
+          <div class="nav-links" role="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="batch.html">Batch Nexus</a>
+            <a href="reflection.html">Reflection</a>
+            <a href="photo.html" aria-current="page">Photos</a>
+          </div>
+
+          <div class="nav-cta-row">
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-drawer">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION -->
+    <div
+      class="mobile-drawer"
+      id="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="mobile-menu-title">
+      <h2 id="mobile-menu-title" class="sr-only">Navigation Menu</h2>
+
+      <button class="drawer-close" aria-label="Close menu">Close</button>
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="batch.html">Batch Nexus</a>
+      <a href="reflection.html">Reflection</a>
+      <a href="photo.html">Photos</a>
+    </div>
+
+    <!-- MEDIA SECTION -->
+    <main class="media-page">
+      <div class="media-header">
+        <h1 class="media-title">Photos & Videos</h1>
+        <p class="media-subtitle">📸 Moments • Memories • Milestones</p>
+        <p class="media-intro">
+          A collection of captured moments from my journey — classroom
+          activities, batch events, and meaningful experiences throughout the
+          Professional Education Course.
+        </p>
+      </div>
+
+      <!-- TABS -->
+      <div class="media-tabs" role="tablist">
+        <button
+          class="media-tab active"
+          role="tab"
+          aria-selected="true"
+          data-tab="photos">
+          Photos
+        </button>
+        <button
+          class="media-tab"
+          role="tab"
+          aria-selected="false"
+          data-tab="videos">
+          Videos
+        </button>
+      </div>
+
+      <!-- PHOTOS GRID -->
+      <div class="media-grid" id="photos-grid">
+        <div class="media-item" data-type="image" data-src="1-3.jpg">
+          <img src="1-3.jpg" alt="Memory 1" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-5.jpg">
+          <img src="1-5.jpg" alt="Memory 2" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-1.jpg">
+          <img src="1-1.jpg" alt="Memory 3" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-2.jpg">
+          <img src="1-2.jpg" alt="Memory 4" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-6.jpg">
+          <img src="1-6.jpg" alt="Memory 5" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-7.jpg">
+          <img src="1-7.jpg" alt="Memory 6" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-4.jpg">
+          <img src="1-4.jpg" alt="Memory 7" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-8.jpg">
+          <img src="1-8.jpg" alt="Memory 8" />
+        </div>
+
+        <div class="media-item" data-type="image" data-src="1-9.jpg">
+          <img src="1-9.jpg" alt="Memory 9" />
+        </div>
+      </div>
+
+      <!-- VIDEOS SECTION (FEATURED + CENTERED ROW) -->
+      <div id="videos-container" style="display: none">
+        <!-- Featured Video -->
+        <div class="video-featured">
+          <div class="video-featured-label">Featured Video</div>
+
+          <div
+            class="video-featured-item"
+            data-type="video"
+            data-src="video1.mp4"
+            data-caption="The Role of ICT in Assessing Learning">
+            <div class="video-featured-badge">★ Featured</div>
+
+            <img
+              class="video-thumb"
+              src="thumb-4.png"
+              alt="The Role of ICT in Assessing Learning" />
+
+            <div class="video-overlay">
+              <div class="video-play">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div class="video-title">
+                The Role of ICT in Assessing Learning
+              </div>
+              <div class="video-label">▶ 07:45</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centered Video Row -->
+        <div class="videos-row" id="videos-grid">
+          <div
+            class="media-item media-item--video"
+            data-type="video"
+            data-src="2-1.mp4"
+            data-caption="Report Presentation">
+            <img
+              class="video-thumb"
+              src="thumb-1.png"
+              alt="Report Presentation" />
+            <div class="video-overlay">
+              <div class="video-play">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div class="video-title">Report Presentation</div>
+              <div class="video-label">▶ 05:12</div>
+            </div>
+          </div>
+
+          <div
+            class="media-item media-item--video"
+            data-type="video"
+            data-src="2-2.mp4"
+            data-caption="Group Presentation">
+            <img
+              class="video-thumb"
+              src="thumb-2.png"
+              alt="Group Presentation" />
+            <div class="video-overlay">
+              <div class="video-play">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div class="video-title">Group Presentation</div>
+              <div class="video-label">▶ 03:48</div>
+            </div>
+          </div>
+
+          <div
+            class="media-item media-item--video"
+            data-type="video"
+            data-src="2-3.mp4"
+            data-caption="Report Presentation">
+            <img
+              class="video-thumb"
+              src="thumb-3.png"
+              alt="Report Presentation" />
+            <div class="video-overlay">
+              <div class="video-play">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div class="video-title">Report Presentation</div>
+              <div class="video-label">▶ 01:56</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Media viewer">
+      <button class="lightbox-close" aria-label="Close viewer">✕</button>
+
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous item">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7z" /></svg>
+      </button>
+
+      <button class="lightbox-nav lightbox-next" aria-label="Next item">
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7z" /></svg>
+      </button>
+
+      <div class="lightbox-counter" id="lightbox-counter"></div>
+      <div id="lightbox-content"></div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <script src="site.js"></script>
+
+    <script>
+      // ---- Tab switching ----
+      const tabs = document.querySelectorAll(".media-tab");
+      const photosGrid = document.getElementById("photos-grid");
+      const videosContainer = document.getElementById("videos-container");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => {
+            t.classList.remove("active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+
+          if (tab.dataset.tab === "photos") {
+            photosGrid.style.display = "grid";
+            videosContainer.style.display = "none";
+          } else {
+            photosGrid.style.display = "none";
+            videosContainer.style.display = "block";
+          }
+        });
+      });
+
+      // ---- Lightbox ----
+      const lightbox = document.getElementById("lightbox");
+      const lightboxContent = document.getElementById("lightbox-content");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+      const lightboxCounter = document.getElementById("lightbox-counter");
+      const lightboxClose = document.querySelector(".lightbox-close");
+      const lightboxPrev = document.querySelector(".lightbox-prev");
+      const lightboxNext = document.querySelector(".lightbox-next");
+
+      let currentList = [];
+      let currentIndex = 0;
+
+      function getCaption(item) {
+        if (item.dataset.caption) return item.dataset.caption;
+        const el = item.querySelector(".video-title");
+        return el ? el.textContent.trim() : "";
+      }
+
+      function renderSlide() {
+        const item = currentList[currentIndex];
+        const type = item.dataset.type;
+        const src = item.dataset.src;
+        const caption = getCaption(item);
+
+        lightboxContent.innerHTML = "";
+
+        if (type === "image") {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = caption || "Media";
+          lightboxContent.appendChild(img);
+        } else if (type === "video") {
+          const video = document.createElement("video");
+          video.src = src;
+          video.controls = true;
+          video.autoplay = true;
+          lightboxContent.appendChild(video);
+        }
+
+        lightboxCaption.textContent = caption || "";
+        lightboxCounter.textContent =
+          currentIndex + 1 + " / " + currentList.length;
+      }
+
+      function openLightbox(list, index) {
+        currentList = list;
+        currentIndex = index;
+        renderSlide();
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        lightboxContent.innerHTML = "";
+        lightboxCaption.textContent = "";
+        lightboxCounter.textContent = "";
+        document.body.style.overflow = "";
+      }
+
+      function showPrev() {
+        if (currentList.length === 0) return;
+        currentIndex =
+          (currentIndex - 1 + currentList.length) % currentList.length;
+        renderSlide();
+      }
+
+      function showNext() {
+        if (currentList.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentList.length;
+        renderSlide();
+      }
+
+      // Attach click handlers within each group
+      function attachGroup(selector) {
+        const items = Array.from(document.querySelectorAll(selector));
+        items.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            openLightbox(items, index);
+          });
+        });
+      }
+
+      attachGroup("#photos-grid .media-item");
+      attachGroup("#videos-grid .media-item");
+
+      // Featured video includes all videos in one navigable list
+      const featuredItem = document.querySelector(".video-featured-item");
+      if (featuredItem) {
+        featuredItem.addEventListener("click", () => {
+          const allVideos = [
+            featuredItem,
+            ...document.querySelectorAll("#videos-grid .media-item"),
+          ];
+          openLightbox(allVideos, 0);
+        });
+      }
+
+      // Controls
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightboxPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showPrev();
+      });
+      lightboxNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showNext();
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("active")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "ArrowRight") showNext();
+      });
+    </script>
+  </body>
+</html>
