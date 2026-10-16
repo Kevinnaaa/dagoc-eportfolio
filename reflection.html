@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Reflection | Brendan Jadrian W. Dagoc</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter+Tight:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      .reflection-page {
+        padding: 120px 24px 80px;
+        background: #101012;
+        min-height: 100vh;
+        color: #f5f5f0;
+      }
+
+      .reflection-header {
+        max-width: 800px;
+        margin: 0 auto 60px;
+        text-align: center;
+      }
+
+      .reflection-title {
+        font-family: "Boldonse", sans-serif;
+        font-size: 42px;
+        line-height: 1.2;
+        color: #f5f5f0;
+        margin-bottom: 16px;
+        letter-spacing: 0.5px;
+      }
+
+      .reflection-subtitle {
+        color: #c6f36b;
+        font-family: "Geist Mono", monospace;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .reflection-meta {
+        color: rgba(245, 245, 240, 0.5);
+        font-family: "Geist Mono", monospace;
+        font-size: 12px;
+      }
+
+      .reflection-content {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .reflection-content h2 {
+        font-family: "Boldonse", sans-serif;
+        font-size: 24px;
+        color: #c6f36b;
+        margin-top: 56px;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+      }
+
+      .reflection-content h2:first-child {
+        margin-top: 0;
+      }
+
+      .reflection-content p {
+        color: rgba(245, 245, 240, 0.8);
+        line-height: 1.9;
+        margin-bottom: 22px;
+        font-size: 16px;
+      }
+
+      .reflection-content p:first-of-type::first-letter {
+        font-family: "Boldonse", sans-serif;
+        font-size: 56px;
+        float: left;
+        line-height: 0.9;
+        padding: 6px 12px 0 0;
+        color: #c6f36b;
+      }
+
+      .reflection-divider {
+        width: 60px;
+        height: 2px;
+        background: #c6f36b;
+        margin: 48px auto;
+        border: none;
+        opacity: 0.4;
+      }
+
+      .reflection-closing {
+        margin-top: 60px;
+        padding: 32px 28px;
+        border-left: 3px solid #c6f36b;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0 12px 12px 0;
+      }
+
+      .reflection-closing p {
+        font-style: italic;
+        color: rgba(245, 245, 240, 0.9);
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 768px) {
+        .reflection-title {
+          font-size: 28px;
+        }
+
+        .reflection-content h2 {
+          font-size: 20px;
+          margin-top: 44px;
+        }
+
+        .reflection-content p {
+          font-size: 15px;
+        }
+
+        .reflection-content p:first-of-type::first-letter {
+          font-size: 44px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- SITE NAVIGATION: APPEARS AFTER THE INTRO SCREEN -->
+    <header class="site-header">
+      <div class="container container--wide">
+        <nav class="nav" aria-label="Primary">
+          <a class="brand">Dagoc Portfolio </a>
+
+          <div class="nav-links" role="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="batch.html">Batch Nexus</a>
+            <a href="reflection.html" aria-current="page">Reflection</a>
+            <a href="photo.html">Photos</a>
+          </div>
+
+          <div class="nav-cta-row">
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-drawer">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION -->
+    <div
+      class="mobile-drawer"
+      id="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="mobile-menu-title">
+      <h2 id="mobile-menu-title" class="sr-only">Navigation Menu</h2>
+
+      <button class="drawer-close" aria-label="Close menu">Close</button>
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="batch.html">Batch Nexus</a>
+      <a href="reflection.html">Reflection</a>
+      <a href="photo.html">Photos</a>
+    </div>
+
+    <!-- REFLECTION SECTION -->
+    <main class="reflection-page">
+      <div class="reflection-header">
+        <h1 class="reflection-title">
+          My Journey in Taking the Professional Education Course
+        </h1>
+        <p class="reflection-subtitle">
+          A Journey of Discovery, Growth, and New Beginnings
+        </p>
+        <p class="reflection-meta">by Brendan Jadrian W. Dagoc</p>
+      </div>
+
+      <div class="reflection-content">
+        <h2>Introduction: The Beginning of a New Journey</h2>
+
+        <p>
+          Life is a continuous journey of learning, discovering new
+          opportunities, and making decisions that can shape our future.
+          Sometimes, we begin with one dream, but as we gain experience and
+          understand ourselves better, we realize that there are other paths
+          worth pursuing. This is how I describe my journey toward enrolling in
+          the Professional Education Course (PEC). As a graduate of Bachelor of
+          Science in Hotel and Restaurant Management (BSRM), I never imagined
+          that I would eventually pursue another course related to education.
+          However, as time passed and I gained more experience in my
+          professional life, I began to recognize the importance of expanding my
+          knowledge, improving my qualifications, and preparing myself for other
+          career opportunities.
+        </p>
+
+        <p>
+          Enrolling in the PEC course was not an easy decision because it meant
+          accepting another responsibility while already working and managing
+          other aspects of my life. It required me to step outside my comfort
+          zone and become a student once again. I had to prepare myself for new
+          lessons, academic requirements, group activities, classroom
+          discussions, and interactions with people whom I had never met before.
+          Despite these challenges, I decided to take this opportunity because I
+          believed that investing in education is one of the best ways to
+          improve myself and prepare for a better future.
+        </p>
+
+        <p>
+          For me, PEC is more than just a second course. It represents my
+          willingness to learn something new, explore another profession, and
+          open doors to opportunities that I may not have considered before. It
+          is also a reminder that our educational journey does not necessarily
+          end when we receive our first diploma. As long as we are willing to
+          learn and improve, there will always be opportunities to discover new
+          possibilities and pursue our dreams.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>My Background as a Graduate and a Government Employee</h2>
+
+        <p>
+          After completing my bachelor's degree in Hotel and Restaurant
+          Management, I began building my professional experience and exploring
+          opportunities related to my education. My degree provided me with
+          knowledge and skills in hospitality, customer service, communication,
+          teamwork, and dealing with different types of people. These
+          competencies helped shape my professional attitude and taught me the
+          importance of responsibility, patience, and dedication in the
+          workplace.
+        </p>
+
+        <p>
+          At present, I am working as a contractual employee at JH Cerilles
+          State College (JHCSC), Pagadian Annex. Being part of a government
+          institution has allowed me to experience the importance of public
+          service, professionalism, accountability, and cooperation. Through my
+          work, I have learned that every employee has a role in contributing to
+          the goals of an institution. Regardless of our position, our
+          responsibilities matter because they help ensure that daily operations
+          run smoothly and that the people we serve receive the assistance they
+          need.
+        </p>
+
+        <p>
+          However, my present employment has also encouraged me to think about
+          my long-term career plans. As a contractual employee, I understand the
+          importance of preparing myself for future opportunities and finding
+          ways to strengthen my professional qualifications. I want to continue
+          growing in my current field while also exploring other possibilities
+          that may provide greater career stability and personal fulfillment.
+        </p>
+
+        <p>
+          This is one of the reasons I decided to pursue the Professional
+          Education Course. I realized that completing the necessary
+          professional education requirements could help prepare me for a future
+          teaching career. I also hope that having additional qualifications
+          will broaden my opportunities when applying for appropriate government
+          positions. Although I understand that regular employment depends on
+          the available position, required qualifications, and applicable
+          selection process, I believe that preparing myself through education
+          is a meaningful step toward my goals.
+        </p>
+
+        <p>
+          My experience as a government employee has taught me that career
+          development requires initiative. We cannot always wait for
+          opportunities to come to us; sometimes, we need to prepare ourselves
+          so that when an opportunity becomes available, we are ready to take
+          it. Through PEC, I am investing in my personal and professional
+          development and giving myself the chance to explore a different
+          direction in life.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>Discovering My Desire to Become a Teacher</h2>
+
+        <p>
+          One of the most important realizations I gained before enrolling in
+          PEC was my desire to become a licensed professional teacher. As a
+          graduate of a hospitality-related program, I realized that my
+          knowledge and experiences could be useful not only in the workplace
+          but also in educating and guiding future students. The hospitality and
+          tourism industry requires individuals who possess practical skills,
+          professionalism, good communication, and a strong sense of
+          responsibility. I believe that these are valuable lessons that can be
+          shared with students who aspire to pursue similar careers.
+        </p>
+
+        <p>
+          This realization made me understand that teaching could become another
+          meaningful profession for me. I began to see the possibility of
+          standing in front of a classroom, sharing what I have learned, guiding
+          students through their challenges, and helping them prepare for their
+          future careers. The thought of contributing to another person's
+          learning and development gave me a new perspective on my professional
+          goals.
+        </p>
+
+        <p>
+          At the same time, I understand that having knowledge of a particular
+          field does not automatically make someone an effective teacher.
+          Teaching requires specific knowledge, skills, and attitudes that must
+          be developed through professional preparation. A teacher must
+          understand how students learn, how to prepare appropriate lessons, how
+          to assess learning, and how to manage a classroom with different
+          personalities and learning needs. This is why I recognized the
+          importance of taking PEC.
+        </p>
+
+        <p>
+          Through this course, I am beginning to understand the difference
+          between knowing something and knowing how to teach it effectively. A
+          person may be knowledgeable in a particular subject, but an effective
+          teacher must also be able to explain concepts clearly, provide
+          meaningful learning experiences, encourage participation, and help
+          students overcome difficulties. This realization has made me
+          appreciate the value of professional education and the preparation
+          required to become a responsible and competent educator.
+        </p>
+
+        <p>
+          My dream of becoming a licensed teacher is still a work in progress,
+          but I am willing to take the necessary steps to achieve it. I know
+          that there will be more requirements, challenges, and responsibilities
+          ahead. Nevertheless, I believe that every lesson I learn in PEC brings
+          me closer to understanding the teaching profession and preparing
+          myself for the possibility of becoming part of it.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>My First Experiences as a PEC Student</h2>
+
+        <p>
+          Returning to the classroom as a student has given me a different
+          perspective on education. Since I already completed my bachelor's
+          degree and am currently working, I entered this course with
+          expectations, responsibilities, and experiences that influenced the
+          way I approached learning. However, I quickly realized that being a
+          student again requires humility and an open mind. Regardless of our
+          age, educational background, or work experience, there is always
+          something new to learn.
+        </p>
+
+        <p>
+          During my PEC journey, I encountered lessons and activities that
+          challenged me to think critically, express my ideas, participate in
+          discussions, and work with others. There were moments when I needed to
+          adjust to the requirements of the course and understand concepts that
+          were unfamiliar to me. These experiences reminded me that learning is
+          not always easy, but it becomes meaningful when we are willing to make
+          an effort and learn from our mistakes.
+        </p>
+
+        <p>
+          I also realized that being a PEC student is not only about completing
+          assignments and passing examinations. It is about developing the
+          mindset and qualities needed in the teaching profession. Every
+          classroom discussion, written reflection, group presentation, and
+          learning activity provides an opportunity to practice communication,
+          critical thinking, collaboration, and problem-solving.
+        </p>
+
+        <p>
+          Through these experiences, I have become more aware of my strengths
+          and weaknesses. I learned that I need to continue improving my
+          confidence, communication skills, patience, and ability to express my
+          thoughts clearly. At the same time, I recognized that my previous
+          educational and professional experiences are strengths that I can
+          bring into my new learning environment.
+        </p>
+
+        <p>
+          Most importantly, I learned to accept that being a learner means being
+          willing to make mistakes and improve. I do not need to know everything
+          immediately. What matters is my willingness to listen, ask questions,
+          participate, and apply the lessons I gain throughout the course.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>The Importance of Meeting New Friends and Classmates</h2>
+
+        <p>
+          One of the most enjoyable parts of my PEC journey has been meeting new
+          friends and classmates. Entering a new learning environment can be
+          challenging because we begin among people whose backgrounds,
+          personalities, experiences, and goals may be different from our own.
+          At first, interacting with unfamiliar people may require effort, but
+          as we participate in class activities and communicate with one
+          another, we gradually develop friendships and build a sense of
+          belonging.
+        </p>
+
+        <p>
+          Meeting my classmates has allowed me to understand that every person
+          has a different reason for pursuing professional education. Some may
+          want to become teachers, while others may be exploring new career
+          opportunities or seeking personal development. Despite our different
+          backgrounds, we share a common experience: we are all making an effort
+          to learn, improve ourselves, and achieve our individual goals.
+        </p>
+
+        <p>
+          Through our conversations and group activities, I have learned to
+          appreciate different opinions and perspectives. I realized that
+          learning does not happen only when the instructor discusses a lesson.
+          Sometimes, we learn valuable things from our classmates through their
+          experiences, questions, ideas, and personal insights. Listening to
+          their stories has helped me understand that everyone has their own
+          struggles and motivations, even if we do not always see them.
+        </p>
+
+        <p>
+          Our group activities have also taught me the importance of teamwork
+          and cooperation. Working with different people requires patience,
+          understanding, and a willingness to listen. There may be differences
+          in opinions, working styles, or approaches to completing a task, but
+          these situations provide opportunities to develop our interpersonal
+          skills. I learned that successful teamwork is not simply about
+          dividing responsibilities; it is about communicating effectively,
+          respecting each member's contribution, and working toward a common
+          goal.
+        </p>
+
+        <p>
+          The friendships I have developed throughout this journey have made the
+          experience more meaningful. Having classmates who share similar
+          academic responsibilities helps create an environment where we can
+          encourage and support one another. When requirements become difficult
+          or schedules become demanding, knowing that other people are
+          experiencing similar challenges reminds me that I am not alone.
+        </p>
+
+        <p>
+          I believe that the relationships I have built during PEC will remain a
+          valuable part of my experience. More than the lessons written in our
+          notebooks, the friendships, shared experiences, and memories we create
+          contribute to our personal growth. They remind me that education is
+          not only an individual journey but also a shared experience in which
+          people can learn from and inspire one another.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>Learning from Our Instructors and Teachers</h2>
+
+        <p>
+          Another significant part of my PEC journey has been learning from our
+          instructors. Their knowledge, guidance, teaching approaches, and
+          feedback have helped me understand the responsibilities involved in
+          becoming an educator. As I listen to their discussions and observe how
+          they facilitate learning, I begin to recognize the amount of
+          preparation and dedication required to teach effectively.
+        </p>
+
+        <p>
+          Before taking PEC, I understood teaching mainly as the process of
+          explaining lessons and providing students with information. However,
+          my experiences in the course have helped me realize that teaching
+          involves much more than delivering content. Teachers must prepare
+          lessons according to learning objectives, identify appropriate
+          teaching strategies, consider the needs of different learners, and
+          evaluate whether students have understood the lesson. They must also
+          create an environment where students feel respected, encouraged, and
+          comfortable participating in the learning process.
+        </p>
+
+        <p>
+          I have also learned the importance of accepting feedback. Sometimes,
+          we may believe that we have completed a task correctly, but the
+          comments and suggestions of our instructors can reveal areas where we
+          need to improve. Rather than viewing corrections as failures, I am
+          learning to treat them as opportunities for growth. This attitude is
+          important because a future teacher must be willing to evaluate
+          personal performance, recognize weaknesses, and make adjustments when
+          necessary.
+        </p>
+
+        <p>
+          Our instructors have also helped me appreciate the value of patience
+          and understanding in education. Every student has a different learning
+          pace, level of confidence, and way of understanding information. An
+          effective teacher must be able to recognize these differences and
+          provide appropriate support. This realization encourages me to become
+          more considerate and open-minded as I continue preparing for a
+          possible teaching career.
+        </p>
+
+        <p>
+          I have come to understand that teachers are not only sources of
+          knowledge but also role models who can influence students through
+          their actions, attitudes, and values. Their professionalism, fairness,
+          dedication, and willingness to help demonstrate the qualities that
+          future educators should develop. Through their guidance, I am learning
+          to look beyond the academic requirements of PEC and focus on the kind
+          of teacher I hope to become.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>The Lessons I Learned About the Teaching Profession</h2>
+
+        <p>
+          Throughout my PEC journey, I have gained a deeper understanding of the
+          responsibilities and challenges of teaching. One of the most important
+          lessons I learned is that every learner is different. Students may
+          have different abilities, interests, backgrounds, personalities, and
+          learning needs. Because of this, teachers must avoid assuming that one
+          teaching strategy will work equally well for everyone.
+        </p>
+
+        <p>
+          This realization has helped me appreciate inclusive education and the
+          importance of creating learning opportunities for all students. A good
+          teacher must recognize that some learners may need additional
+          guidance, alternative explanations, more time, or different learning
+          materials. Rather than focusing only on the students who easily
+          understand the lesson, teachers must also consider those who need
+          extra support. I learned that being an effective educator requires
+          empathy, patience, flexibility, and respect for individual
+          differences.
+        </p>
+
+        <p>
+          Another lesson I learned is the importance of classroom management. A
+          classroom is composed of individuals with different behaviors and
+          levels of participation. Teachers must establish clear expectations,
+          encourage positive behavior, maintain a productive learning
+          environment, and respond appropriately when challenges arise.
+          Classroom management should not simply be about controlling students;
+          it should also be about helping them develop discipline,
+          responsibility, respect, and cooperation.
+        </p>
+
+        <p>
+          I also gained an appreciation for lesson planning and assessment.
+          Lessons should have clear objectives and appropriate activities that
+          help students achieve the intended learning outcomes. Teachers must
+          carefully choose learning materials, methods, and assessments that are
+          relevant to the lesson and suitable for the learners. Assessment, in
+          particular, should not be viewed only as a way of assigning grades. It
+          should also help teachers identify what students have learned,
+          determine which concepts need further explanation, and improve their
+          teaching strategies.
+        </p>
+
+        <p>
+          Furthermore, I learned that effective teaching requires creativity and
+          adaptability. Teachers must be prepared to adjust their methods
+          depending on the situation and the needs of their students. They must
+          also continue learning because educational practices, technologies,
+          and learner needs continue to change. These lessons have helped me
+          understand that becoming a teacher is a continuous process of
+          development rather than an achievement that ends upon obtaining a
+          license.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>
+          The Role of Information and Communication Technology in Education
+        </h2>
+
+        <p>
+          One of the important areas I have come to appreciate during my PEC
+          journey is the use of Information and Communication Technology (ICT)
+          in teaching and learning. Technology has changed the way information
+          is presented, accessed, and understood. Compared with traditional
+          approaches that rely mainly on textbooks, chalkboards, and printed
+          materials, teachers today have more opportunities to make lessons
+          interactive and engaging through digital tools.
+        </p>
+
+        <p>
+          Through my learning experiences, I have realized that ICT can help
+          teachers present information through videos, presentations,
+          educational websites, interactive activities, and other digital
+          resources. These tools can make abstract concepts easier to understand
+          and provide students with different ways to engage with the lesson.
+          Technology can also encourage collaboration, creativity, independent
+          learning, and active participation.
+        </p>
+
+        <p>
+          However, I have also learned that using technology does not
+          automatically make a lesson effective. Teachers must carefully select
+          tools that support the learning objectives rather than using
+          technology simply because it is available. They must also consider
+          whether students have access to the necessary devices and internet
+          connection, and they should provide alternative learning methods when
+          needed.
+        </p>
+
+        <p>
+          Another important realization is the need to promote responsible and
+          ethical technology use. Students must learn how to evaluate online
+          information, protect their privacy, respect intellectual property, and
+          use digital platforms appropriately. As a future educator, I believe
+          that I must also continue developing my own digital skills so that I
+          can guide students in using technology safely and productively.
+        </p>
+
+        <p>
+          This lesson is particularly meaningful because it reminds me that
+          teachers must adapt to the changing needs of society. If I become a
+          teacher, I want to use appropriate technology to make learning more
+          accessible, practical, and interesting while maintaining the human
+          connection that is essential to education.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>Balancing My Studies, Work, and Personal Responsibilities</h2>
+
+        <p>
+          One of the challenges of my PEC journey is balancing my academic
+          responsibilities with my current employment and personal life. Being a
+          working student requires discipline because I must manage my time
+          carefully and make sure that I fulfill my responsibilities in both
+          areas. There are times when work demands attention while academic
+          requirements also need to be completed. These situations can become
+          stressful, especially when several tasks need to be accomplished
+          within a limited period.
+        </p>
+
+        <p>
+          Through these challenges, I have learned the importance of time
+          management and prioritization. I realized that I cannot always depend
+          on motivation alone. There are days when I feel tired or overwhelmed,
+          but I still need to make responsible decisions about how I use my
+          time. Setting priorities, organizing tasks, and preparing ahead can
+          help me manage my responsibilities more effectively.
+        </p>
+
+        <p>
+          I have also learned the importance of discipline and consistency.
+          Small efforts, when done regularly, can contribute significantly to
+          achieving a larger goal. Completing assignments early, reviewing
+          lessons, participating in discussions, and preparing for assessments
+          are habits that can help me become a more responsible student.
+        </p>
+
+        <p>
+          Another lesson I learned is that progress does not always happen
+          quickly. There may be moments when I feel uncertain about my abilities
+          or wonder whether I can successfully manage all my responsibilities.
+          During these times, I remind myself why I started this journey. I want
+          to improve my qualifications, explore the teaching profession, and
+          prepare for future opportunities. Remembering these goals helps me
+          continue even when the process becomes challenging.
+        </p>
+
+        <p>
+          My experience as a working PEC student has also taught me to value
+          rest, patience, and self-awareness. I need to recognize my limitations
+          and manage my responsibilities in a way that allows me to continue
+          learning without neglecting other important aspects of my life. This
+          experience is helping me develop the perseverance and sense of
+          responsibility that I will also need in my future career.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>Discovering My Strengths and Recognizing My Weaknesses</h2>
+
+        <p>
+          My PEC journey has encouraged me to reflect on my personal strengths
+          and the areas where I still need improvement. One of the strengths I
+          can bring to this course is my willingness to learn. Even after
+          completing my bachelor's degree and entering the workforce, I remain
+          open to new experiences and opportunities for development. I believe
+          that this attitude is important because learning should not stop
+          simply because we have already completed a particular stage of
+          education.
+        </p>
+
+        <p>
+          My professional experience has also helped me develop responsibility,
+          teamwork, communication, and adaptability. Working in an institutional
+          environment has taught me the importance of following procedures,
+          coordinating with other people, and completing tasks properly. These
+          experiences can help me adjust to the expectations of the teaching
+          profession, where collaboration, organization, and professionalism are
+          essential.
+        </p>
+
+        <p>
+          At the same time, I recognize that there are areas where I need to
+          improve. Returning to an academic environment requires me to
+          strengthen my study habits, improve my confidence in classroom
+          discussions, and continue developing my skills in lesson preparation
+          and instructional delivery. I also need to learn how to explain
+          concepts in ways that are understandable to students with different
+          learning abilities and backgrounds.
+        </p>
+
+        <p>
+          Rather than allowing these weaknesses to discourage me, I see them as
+          areas for development. I understand that nobody becomes an effective
+          professional overnight. Improvement requires practice, feedback,
+          reflection, and a willingness to learn from mistakes. By acknowledging
+          my weaknesses, I can identify the steps I need to take to become more
+          competent and confident.
+        </p>
+
+        <p>
+          This process has taught me that personal growth begins with
+          self-awareness. I must understand what I can already do well while
+          remaining honest about the skills I still need to develop. As I
+          continue my PEC journey, I want to use every learning opportunity to
+          strengthen my abilities and prepare myself for the responsibilities
+          that may come in the future.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>Connecting My Previous Degree to My Future Teaching Career</h2>
+
+        <p>
+          My background in Hotel and Restaurant Management is an important part
+          of my identity, and I do not consider taking PEC a departure from
+          everything I have learned before. Instead, I see it as an opportunity
+          to connect my existing knowledge with a new professional direction.
+        </p>
+
+        <p>
+          Hospitality education involves both theoretical understanding and
+          practical application. Students must learn concepts related to
+          service, communication, management, professionalism, and customer
+          relations, but they must also develop the ability to apply these
+          concepts in actual situations. My background gives me a foundation
+          that I may eventually share with students who are preparing for
+          careers in hospitality, tourism, or related fields.
+        </p>
+
+        <p>
+          For example, my experiences have helped me appreciate the importance
+          of teamwork, attention to detail, effective communication,
+          problem-solving, and providing quality service. These competencies can
+          be valuable in helping students understand the expectations of the
+          professional world. If I have the opportunity to teach in a related
+          field, I hope to connect classroom discussions with practical examples
+          and real-world situations.
+        </p>
+
+        <p>
+          At the same time, PEC is teaching me that subject knowledge must be
+          supported by sound teaching practices. It is not enough to share
+          personal experiences; I must also know how to organize lessons,
+          explain concepts, assess understanding, and create opportunities for
+          students to practice what they learn. This is where professional
+          education becomes valuable because it helps me understand how to
+          transform knowledge into meaningful learning experiences.
+        </p>
+
+        <p>
+          I now see my two educational paths as complementary. My first degree
+          provides me with a foundation in hospitality, while PEC helps me
+          develop the educational knowledge and skills needed to share that
+          foundation with others. Together, they can help me explore
+          opportunities where my previous training and newly acquired teaching
+          competencies can work hand in hand.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>My Hopes for a Better and More Meaningful Future</h2>
+
+        <p>
+          As I continue my PEC journey, I carry hopes that extend beyond
+          completing the course. One of my goals is to fulfill the necessary
+          requirements to pursue a professional teaching license and explore
+          opportunities in the education sector. I want to challenge myself to
+          become someone who can contribute to the development of students and
+          help them prepare for their future careers.
+        </p>
+
+        <p>
+          I also hope to improve my professional qualifications so that I can be
+          better prepared for suitable employment opportunities, including
+          positions in government service. My present work at JHCSC Pagadian
+          Annex has given me valuable experience, and I am grateful for the
+          opportunity to contribute to an institution. However, I also recognize
+          the importance of planning for long-term career development. I want to
+          continue improving my skills and preparing myself for opportunities
+          that align with my qualifications and goals.
+        </p>
+
+        <p>
+          More than career advancement, I want my journey to have a meaningful
+          purpose. I want to become a person who does not stop learning after
+          achieving one milestone. I want to remain open to new challenges,
+          develop new skills, and use my experiences to help other people.
+          Whether my future leads me toward teaching, continued government
+          service, or another opportunity where my qualifications are useful, I
+          believe that the knowledge and values I gain from PEC will continue to
+          benefit me.
+        </p>
+
+        <p>
+          I understand that success is not always immediate, and the path toward
+          my goals may involve uncertainty. There may be applications,
+          examinations, additional requirements, and challenges that I will need
+          to face. Nevertheless, I believe that preparation, perseverance, and
+          continuous learning will help me move forward. I cannot control every
+          opportunity that comes my way, but I can control the effort I put into
+          preparing myself.
+        </p>
+
+        <hr class="reflection-divider" />
+
+        <h2>Conclusion: A Journey That Continues Beyond the Classroom</h2>
+
+        <p>
+          Looking back on my journey toward enrolling in the Professional
+          Education Course, I realize that this decision represents more than
+          the pursuit of another qualification. It reflects my willingness to
+          grow, my desire to explore new opportunities, and my determination to
+          prepare for a better future. As a BSRM graduate and a contractual
+          employee at JHCSC Pagadian Annex, I have learned that professional
+          development does not end with our first degree or our first job.
+          Instead, every experience can become a foundation for further growth.
+        </p>
+
+        <p>
+          Through PEC, I have gained a deeper understanding of the teaching
+          profession, the responsibilities of educators, and the importance of
+          creating meaningful learning experiences. I have learned about lesson
+          planning, classroom management, assessment, inclusive education, and
+          the appropriate use of technology. These lessons have helped me
+          realize that teaching requires not only knowledge but also patience,
+          empathy, creativity, discipline, and a genuine commitment to helping
+          learners succeed.
+        </p>
+
+        <p>
+          Beyond academic knowledge, I have also gained valuable experiences
+          from meeting new friends and classmates, working with different
+          people, and learning from our instructors. These interactions have
+          taught me the importance of teamwork, respect, cooperation, and
+          continuous improvement. They have reminded me that education is not
+          simply about individual achievement but also about the relationships
+          and shared experiences that help us become better individuals.
+        </p>
+
+        <p>
+          My journey has also taught me to appreciate the value of perseverance.
+          Balancing work, studies, and personal responsibilities can be
+          challenging, but these experiences are helping me become more
+          disciplined and determined. I have learned that pursuing a dream
+          requires patience and consistent effort, and that even small steps can
+          bring us closer to our goals.
+        </p>
+
+        <p>
+          As I move forward, I hope to complete my professional education
+          requirements, pursue my goal of becoming a licensed teacher, and
+          explore opportunities that will allow me to continue growing
+          professionally. I know that the road ahead may not always be easy, but
+          I am willing to learn from every challenge and make the most of every
+          opportunity.
+        </p>
+
+        <p>
+          Ultimately, my PEC journey has reminded me that it is never too late
+          to begin again, discover a new passion, or work toward a different
+          dream. My first degree, my current employment, and my experiences as a
+          PEC student are all important parts of my journey. They have shaped my
+          perspective and helped me understand the kind of professional and
+          individual I want to become.
+        </p>
+
+        <p>
+          I began this journey with the hope of opening new career
+          opportunities, but I am discovering that its value goes far beyond
+          employment. It is teaching me to become more understanding,
+          responsible, confident, and willing to learn. As I continue, I will
+          carry the lessons, friendships, and experiences I have gained, knowing
+          that they will help guide me toward my future.
+        </p>
+
+        <p>
+          For me, the Professional Education Course is not the end of one
+          journey but the beginning of another. It is an investment in myself,
+          an opportunity to serve others in a new way, and a reminder that
+          growth begins when we have the courage to take the next step. I may
+          not know exactly where this path will lead me, but I am determined to
+          continue learning, improving, and working toward a future where I can
+          use my knowledge and experiences to make a positive difference in the
+          lives of others.
+        </p>
+
+        <div class="reflection-closing">
+          <p>
+            This reflection is a living document — a snapshot of where I am now,
+            and a reminder of the growth I still hope to achieve.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="site.js"></script>
+  </body>
+</html>

@@ -1,69 +1,164 @@
 /* Brivon — free HTML template. Minimal vanilla JS: mobile drawer + scroll-reveal. */
 (function () {
-  'use strict';
+  "use strict";
 
   // Mobile drawer
-  const toggle = document.querySelector('.nav-toggle');
-  const drawer = document.getElementById('mobile-drawer');
-  const closeBtn = drawer && drawer.querySelector('.drawer-close');
+  const toggle = document.querySelector(".nav-toggle");
+  const drawer = document.getElementById("mobile-drawer");
+  const closeBtn = drawer?.querySelector(".drawer-close");
+
+  let lastFocusedElement = null;
+
+  function getFocusableElements() {
+    if (!drawer) return [];
+
+    return drawer.querySelectorAll(
+      'button, a[href], input, select, textarea, not([tabindex="-1"])',
+    );
+  }
 
   function openDrawer() {
     if (!drawer) return;
-    drawer.classList.add('open');
-    drawer.setAttribute('aria-hidden', 'false');
-    if (toggle) toggle.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+
+    lastFocusedElement = document.activeElement;
+
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    document.body.style.overflow = "hidden";
+
+    const focusable = getFocusableElements();
+
+    if (focusable.length) {
+      focusable[0].focus();
+    }
   }
+
   function closeDrawer() {
     if (!drawer) return;
-    drawer.classList.remove('open');
-    drawer.setAttribute('aria-hidden', 'true');
-    if (toggle) toggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    document.body.style.overflow = "";
+
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
   }
-  if (toggle) toggle.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+
+  if (toggle) {
+    toggle.addEventListener("click", openDrawer);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeDrawer);
+  }
+
   if (drawer) {
-    drawer.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeDrawer);
     });
   }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+
+  document.addEventListener("keydown", function (e) {
+    if (!drawer || !drawer.classList.contains("open")) {
+      return;
+    }
+
+    if (e.key === "Escape") {
+      closeDrawer();
+      return;
+    }
+
+    if (e.key === "Tab") {
+      const focusable = getFocusableElements();
+
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
   });
 
   // Reveal on intersect (respects prefers-reduced-motion)
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduced && 'IntersectionObserver' in window) {
-    const els = document.querySelectorAll('.reveal');
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduced && "IntersectionObserver" in window) {
+    const els = document.querySelectorAll(".reveal");
+
     if (els.length) {
       els.forEach(function (el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(16px)';
-        el.style.transition = 'opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)';
+        el.style.opacity = "0";
+        el.style.transform = "translateY(16px)";
+        el.style.transition =
+          "opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)";
       });
-      const io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
-      els.forEach(function (el) { io.observe(el); });
+
+      const io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: "0px 0px -10% 0px",
+        },
+      );
+
+      els.forEach(function (el) {
+        io.observe(el);
+      });
     }
   }
 
   // Sticky header subtle shadow on scroll
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector(".site-header");
+
   if (header) {
     let last = 0;
-    window.addEventListener('scroll', function () {
-      const y = window.scrollY;
-      if (y > 4 && last <= 4) header.style.boxShadow = '0 8px 24px -16px rgba(0,0,0,0.6)';
-      if (y <= 4 && last > 4) header.style.boxShadow = 'none';
-      last = y;
-    }, { passive: true });
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        const y = window.scrollY;
+
+        if (y > 4 && last <= 4) {
+          header.style.boxShadow = "0 8px 24px -16px rgba(0,0,0,0.6)";
+        }
+
+        if (y <= 4 && last > 4) {
+          header.style.boxShadow = "none";
+        }
+
+        last = y;
+      },
+      { passive: true },
+    );
   }
 })();

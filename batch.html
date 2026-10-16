@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Batch Nexus 2026 | Brendan Jadrian W. Dagoc</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter+Tight:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      .batch-page {
+        padding: 120px 24px 80px;
+        background: #101012;
+        min-height: 100vh;
+        color: #f5f5f0;
+      }
+
+      .batch-header {
+        max-width: 900px;
+        margin: 0 auto 60px;
+        text-align: center;
+      }
+
+      .batch-title {
+        font-family: "Boldonse", sans-serif;
+        font-size: 48px;
+        color: #f5f5f0;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+      }
+
+      .batch-subtitle {
+        color: #c6f36b;
+        font-family: "Geist Mono", monospace;
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+
+      .batch-intro {
+        color: rgba(245, 245, 240, 0.7);
+        line-height: 1.8;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .batch-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .batch-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .batch-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(198, 243, 107, 0.4);
+      }
+
+      .batch-card img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        display: block;
+        background: #1a1a1e;
+      }
+
+      .batch-card-info {
+        padding: 12px 8px;
+        text-align: center;
+      }
+
+      .batch-card-name {
+        font-family: "Inter Tight", sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        color: #f5f5f0;
+        margin-bottom: 3px;
+      }
+
+      .batch-card-role {
+        font-family: "Geist Mono", monospace;
+        font-size: 10px;
+        color: #c6f36b;
+        letter-spacing: 0.5px;
+      }
+
+      /* Tablet: 4 columns */
+      @media (max-width: 1100px) {
+        .batch-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* Small tablet: 3 columns */
+      @media (max-width: 768px) {
+        .batch-title {
+          font-size: 32px;
+        }
+
+        .batch-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
+        }
+      }
+
+      /* Mobile: 2 columns */
+      @media (max-width: 520px) {
+        .batch-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+
+        .batch-card-name {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- SITE NAVIGATION -->
+    <header class="site-header">
+      <div class="container container--wide">
+        <nav class="nav" aria-label="Primary">
+          <a class="brand">Dagoc Portfolio </a>
+
+          <div class="nav-links" role="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="batch.html" aria-current="page">Batch Nexus</a>
+            <a href="reflection.html">Reflection</a>
+            <a href="photo.html">Photos</a>
+          </div>
+
+          <div class="nav-cta-row">
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-drawer">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION -->
+    <div
+      class="mobile-drawer"
+      id="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="mobile-menu-title">
+      <h2 id="mobile-menu-title" class="sr-only">Navigation Menu</h2>
+
+      <button class="drawer-close" aria-label="Close menu">Close</button>
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="batch.html">Batch Nexus</a>
+      <a href="reflection.html">Reflection</a>
+      <a href="photo.html">Photos</a>
+    </div>
+
+    <!-- BATCH NEXUS SECTION -->
+    <main class="batch-page">
+      <div class="batch-header">
+        <h1 class="batch-title">Batch Nexus 2026</h1>
+        <p class="batch-subtitle">📸 48 Members • One Journey</p>
+        <p class="batch-intro">
+          Meet the members of Batch Nexus 2026 — a community of learners,
+          educators, and future leaders. Together we grow, share knowledge, and
+          make a lasting impact.
+        </p>
+      </div>
+
+      <div class="batch-grid">
+        <!-- Batch Member 1 -->
+        <div class="batch-card">
+          <img src="1.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Abdul, Norhanna V.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 2 -->
+        <div class="batch-card">
+          <img src="2.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Albaracin, Ruvie B.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 3 -->
+        <div class="batch-card">
+          <img src="3.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Angcap, Lenie M.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 4 -->
+        <div class="batch-card">
+          <img src="4.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Aya-Ay, Caryl E.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 5 -->
+        <div class="batch-card">
+          <img src="5.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Bercasio, Mary Jane L.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 6 -->
+        <div class="batch-card">
+          <img src="6.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Brigola, Jesler D.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 7 -->
+        <div class="batch-card">
+          <img src="7.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Calacat, Arlene Jane S.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 8 -->
+        <div class="batch-card">
+          <img src="8.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Cañada, Joyce Grace J.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 9 -->
+        <div class="batch-card">
+          <img src="9.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Dacal, Ceprevher A.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 10 -->
+        <div class="batch-card">
+          <img src="10.jpeg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Dagoc, Brendan Jadrian L.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 11 -->
+        <div class="batch-card">
+          <img src="11.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Dalis, Jonalisa A.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 12 -->
+        <div class="batch-card">
+          <img src="12.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Duhaylungsod, Larra Kristy R.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 13 -->
+        <div class="batch-card">
+          <img src="13.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Enot, Rechaly M.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 14 -->
+        <div class="batch-card">
+          <img src="14.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Gimena, Cristine L.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 15 -->
+        <div class="batch-card">
+          <img src="15.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Gripo, Chessan Vicryl P.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 16 -->
+        <div class="batch-card">
+          <img src="16.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Ibag, Andre Ann D.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 17 -->
+        <div class="batch-card">
+          <img src="17.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Ibrahim, Maliha S.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 18 -->
+        <div class="batch-card">
+          <img src="18.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Jabasa, Hazel M.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 19 -->
+        <div class="batch-card">
+          <img src="19.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Lomocso, Louen Jay L.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 20 -->
+        <div class="batch-card">
+          <img src="20.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Lumampi, Flordeliza C.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 21 -->
+        <div class="batch-card">
+          <img src="21.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Maglanit, Sheila Mae A.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 22 -->
+        <div class="batch-card">
+          <img src="22.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Malanao, Michelle G.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 23 -->
+        <div class="batch-card">
+          <img src="23.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Marcampo, Evelyn D.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 24 -->
+        <div class="batch-card">
+          <img src="24.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Mendez, Edilberto Jr. B.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 25 -->
+        <div class="batch-card">
+          <img src="25.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Mengid, Aina B.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 26 -->
+        <div class="batch-card">
+          <img src="26.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Mentol, Junil G.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 27 -->
+        <div class="batch-card">
+          <img src="27.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Nango, Renafe B.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 28 -->
+        <div class="batch-card">
+          <img src="28.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Nuevo, Jessel T.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 29 -->
+        <div class="batch-card">
+          <img src="29.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Ma. Isabel Ortega</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 30 -->
+        <div class="batch-card">
+          <img src="30.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Padilla, John Carlo C.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 31 -->
+        <div class="batch-card">
+          <img src="31.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Paglinawan, Jeorgen Mae R.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 32 -->
+        <div class="batch-card">
+          <img src="32.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Panas, Meljene C.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 33 -->
+        <div class="batch-card">
+          <img src="33.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Patoc, Michae Mae L.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 34 -->
+        <div class="batch-card">
+          <img src="34.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Ponce, Jaziel Grace M.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 35 -->
+        <div class="batch-card">
+          <img src="35.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Quimbo, Lara Vale G.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 36 -->
+        <div class="batch-card">
+          <img src="36.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Silva, Dexter S.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 37 -->
+        <div class="batch-card">
+          <img src="37.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Sismondo, Jason A.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 38 -->
+        <div class="batch-card">
+          <img src="38.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Sumalindong, Marife L.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 39 -->
+        <div class="batch-card">
+          <img src="39.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Tabunda, Aisel Vi E.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 40 -->
+        <div class="batch-card">
+          <img src="40.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Tanudra, Almira Jean P.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 41 -->
+        <div class="batch-card">
+          <img src="41.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Templa, Mielyne S.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 42 -->
+        <div class="batch-card">
+          <img src="42.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Tenebro, Antoenette D.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 43 -->
+        <div class="batch-card">
+          <img src="43.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Terante, Lady Jean A.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 44 -->
+        <div class="batch-card">
+          <img src="44.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Tiongco, Jesseca G.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 45 -->
+        <div class="batch-card">
+          <img src="45.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Valderrama, Jose Cyril C.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 46 -->
+        <div class="batch-card">
+          <img src="46.jpg" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Vale, Luida C.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 47 -->
+        <div class="batch-card">
+          <img src="47.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Yator, Caren Joy F.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+
+        <!-- Batch Member 48 -->
+        <div class="batch-card">
+          <img src="48.png" alt="Batch Nexus 2026" />
+          <div class="batch-card-info">
+            <div class="batch-card-name">Zafra, Julie Anne H.</div>
+            <div class="batch-card-role">Batch Nexus 2026</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="site.js"></script>
+  </body>
+</html>
